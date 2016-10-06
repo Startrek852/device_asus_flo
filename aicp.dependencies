@@ -14,4 +14,9 @@
    "target_path": "external/stlport",
    "branch":      "cm-13.0"
   }
+  {
+   "repository":  "CyanogenMod/android_hardware_qcom_msm8960",
+   "target_path": "hardware/qcom/msm8960",
+   "branch":      "staging/cm-14.0"
+  }
 ]
