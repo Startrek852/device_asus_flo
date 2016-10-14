@@ -122,6 +122,7 @@ USE_DEVICE_SPECIFIC_CAMERA:= true
 HAVE_ADRENO_SOURCE:= false
 
 BOARD_SEPOLICY_DIRS += device/asus/flo/sepolicy
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
