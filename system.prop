@@ -1,1 +1,4 @@
 qcom.bluetooth.soc=smd
+
+# Storage
+ro.sys.sdcardfs=true
