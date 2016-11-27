@@ -26,6 +26,8 @@
 # if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
+# A list of dpis to select prebuilt apk, in precedence order.
+PRODUCT_AAPT_PREBUILT_DPI := hdpi
 
 PRODUCT_PACKAGES := \
     libwpa_client \
@@ -201,9 +203,9 @@ PRODUCT_PACKAGES += \
 	libstagefrighthw \
 	libc2dcolorconvert
 
-# Gello
-PRODUCT_PACKAGES += \
-	Gello
+## Gello
+#PRODUCT_PACKAGES += \
+#	Gello
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -321,4 +323,3 @@ PRODUCT_PACKAGES += \
     imgdiff
 
 $(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
