@@ -1,5 +1,4 @@
 #
-# Copyright (C) 2011 The Android Open-Source Project
 # Copyright (c) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +28,12 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := hdpi
 
-PRODUCT_PACKAGES := \
-    libwpa_client \
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1200
+TARGET_BOOTANIMATION_HALF_RES := true
+
+PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
@@ -40,6 +43,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     charger_res_images
+
+# http://b/15193147
+# TODO(danalbert): Remove this once stlport is dead and gone.
+PRODUCT_PACKAGES +=  libstlport
 
 PRODUCT_COPY_FILES += \
 	device/asus/flo/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
@@ -59,8 +66,9 @@ PRODUCT_COPY_FILES += \
 	device/asus/flo/thermald-flo.conf:system/etc/thermald.conf
 
 PRODUCT_COPY_FILES += \
-	device/asus/flo/init.flo.usb.rc:root/init.flo.usb.rc \
+	device/asus/flo/init.flo.power.rc:root/init.recovery.flo.rc \
 	device/asus/flo/init.flo.power.rc:root/init.flo.power.rc \
+	device/asus/flo/init.flo.usb.rc:root/init.flo.usb.rc \
 	device/asus/flo/ueventd.flo.rc:root/ueventd.flo.rc \
 	device/asus/flo/media_profiles.xml:system/etc/media_profiles.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -144,6 +152,10 @@ PRODUCT_PACKAGES += \
 	ks \
 	efsks
 
+# Gello
+PRODUCT_PACKAGES += \
+	Gello
+
 #Enable MDP composition by default
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.hwc.mdpcomp.enable=true
@@ -152,7 +164,6 @@ PRODUCT_CHARACTERISTICS := tablet,nosdcard
 
 PRODUCT_PACKAGES += \
 	libgenlock \
-	liboverlay \
 	hwcomposer.msm8960 \
 	gralloc.msm8960 \
 	copybit.msm8960 \
@@ -160,7 +171,6 @@ PRODUCT_PACKAGES += \
 	memtrack.msm8960
 
 PRODUCT_PACKAGES += \
-	alsa.msm8960 \
 	audio.primary.msm8960 \
 	audio.a2dp.default \
 	audio.usb.default \
@@ -189,19 +199,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.qualcomm.bt.hci_transport=smd
 
 PRODUCT_PACKAGES += \
-	libmmcamera_interface2 \
-	libmmcamera_interface \
-	libqomx_core
+	Snap
 
 PRODUCT_PACKAGES += \
-	mm-vdec-omx-test \
-	mm-venc-omx-test720p \
-	libdivxdrmdecrypt \
 	libOmxVdec \
 	libOmxVenc \
 	libOmxCore \
-	libstagefrighthw \
-	libc2dcolorconvert
+	libstagefrighthw
 
 ## Gello
 #PRODUCT_PACKAGES += \
@@ -209,17 +213,8 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-        libloc_adapter \
-        libloc_eng \
-        libloc_api_v02 \
-        libloc_ds_api \
-        libloc_core \
-        libizat_core \
-        libgeofence \
-        libgps.utils \
         gps.conf \
-        gps.msm8960 \
-        flp.msm8960
+        gps.msm8960
 
 PRODUCT_PACKAGES += \
 	bdAddrLoader \
@@ -247,9 +242,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.qc.sensors.wl_dis=true \
         ro.qualcomm.sensors.smd=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.qualcomm.cabl=0
 
 # Configure libhwui
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -310,14 +302,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     device/asus/flo/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     device/asus/flo/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf
-
-# http://b/15193147
-# TODO(danalbert): Remove this once stlport is dead and gone.
-PRODUCT_PACKAGES +=  libstlport
-
-# Camera
-PRODUCT_PACKAGES += \
-    Snap
 
 PRODUCT_PACKAGES += \
     imgdiff
