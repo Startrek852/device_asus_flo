@@ -33,7 +33,7 @@ BOARD_CANT_BUILD_RECOVERY_FROM_BOOT_PATCH := true
 
 # Try to build the kernel
 TARGET_KERNEL_SOURCE := kernel/google/msm
-TARGET_KERNEL_CONFIG := cyanogenmod_flo_defconfig
+TARGET_KERNEL_CONFIG := lineageos_flo_defconfig
 
 BOARD_USES_ALSA_AUDIO:= true
 BOARD_USES_LEGACY_ALSA_AUDIO:= false
